@@ -15,6 +15,7 @@ class AccidentDetectionModel(object):
         self.loaded_model.load_weights(model_weights_file)
         self.loaded_model.make_predict_function()
 
-    def predict_accident(self, img):
+        def predict_accident(self, img):
         self.preds = self.loaded_model.predict(img)
-        return AccidentDetectionModel.class_nums[np.argmax(self.preds)], self.preds
+        prediction_label = AccidentDetectionModel.class_nums[np.argmax(self.preds)]
+        return prediction_label, self.preds
